@@ -26,7 +26,7 @@ namespace CIDemoTest
             int result = _calculator.Add(num1, num2);
 
             // Assert
-            Assert.Equal(8000, result); // The expected sum of 5 + 3 is 8
+            Assert.Equal(8, result); // The expected sum of 5 + 3 is 8
         }
 
         /// <summary>
