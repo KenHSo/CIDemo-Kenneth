@@ -1,7 +1,7 @@
-using CalculatorLibrary; 
+using CalculatorLibrary;
 
 namespace CIDemoTest
-{  
+{
     public class CalculatorTests
     {
         private readonly ICalculator _calculator;
