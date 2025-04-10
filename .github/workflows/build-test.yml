@@ -6,6 +6,7 @@ on:
   pull_request:
     branches: [main]
 
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -22,6 +23,8 @@ jobs:
 
       - name: Build
         run: dotnet build --no-restore
+
+
 
       # Run tests and collect coverage
       - name: Test with code coverage
@@ -41,6 +44,17 @@ jobs:
         with:
           name: coverage-report
           path: coveragereport
+
+
+
+      # Statisk kodeanalyse
+      - name: Install dotnet format
+        run: dotnet tool install -g dotnet-format
+
+      - name: Run code analysis
+        run: dotnet format --verify-no-changes --verbosity diagnostic
+
+
 
   publish:
     needs: build
