@@ -1,4 +1,4 @@
-﻿namespace CIDemo;
+﻿namespace CalculatorLibrary;
 
 public class Calculator : ICalculator
 {
