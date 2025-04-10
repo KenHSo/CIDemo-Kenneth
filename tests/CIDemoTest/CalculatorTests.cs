@@ -93,6 +93,32 @@ namespace CIDemoTest
             // Act & Assert
             Assert.Throws<DivideByZeroException>(() => _calculator.Divide(num1, num2));
         }
+
+        /// <summary>
+        /// Tests the Power method of the Calculator class with positive inputs.
+        /// </summary>
+        [Fact]
+        public void Power_ShouldReturnCorrectResult_WhenGivenBaseAndExponent()
+        {
+            // Arrange
+            double baseValue = 2;
+            double exponent = 3;
+
+            // Act
+            double result = _calculator.Power(baseValue, exponent);
+
+            // Assert
+            Assert.Equal(8.0, result, 5); // 2^3 = 8, with precision tolerance
+        }
+
+        /// <summary>
+        /// Tests the SquareRoot method of the Calculator class with negative input.
+        /// </summary>
+        [Fact]
+        public void SquareRoot_NegativeInput_ThrowsException()
+        {
+            Assert.Throws<ArgumentException>(() => _calculator.SquareRoot(-4));
+        }
     }
 
 }
