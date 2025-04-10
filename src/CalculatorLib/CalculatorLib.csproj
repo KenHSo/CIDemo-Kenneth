@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<PackageId>KenHSo.Calculator</PackageId>
+		<Version>1.0.0</Version>
+		<Authors>KenHSo</Authors>
+		<Description>En simpel lommeregner-pakke</Description>
+		<PackageTags>calculator;math;ci-cd</PackageTags>
+	</PropertyGroup>
+
+</Project>

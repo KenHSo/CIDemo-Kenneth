@@ -1,7 +1,7 @@
-using CIDemo;
+using CalculatorLibrary;
 
 namespace CIDemoTest
-{  
+{
     public class CalculatorTests
     {
         private readonly ICalculator _calculator;
@@ -119,6 +119,102 @@ namespace CIDemoTest
         {
             Assert.Throws<ArgumentException>(() => _calculator.SquareRoot(-4));
         }
+
+        /// <summary>
+        /// Tests the Sin method of the Calculator class.
+        /// </summary>
+        [Fact]
+        public void Sin_ShouldReturnCorrectResult_WhenGivenRadians()
+        {
+            double radians = Math.PI / 2; // 90 degrees
+            double result = _calculator.Sin(radians);
+            Assert.Equal(1.0, result, 5); // Close to 1.0
+        }
+
+        /// <summary>
+        /// Tests the Cos method of the Calculator class.
+        /// </summary>
+        [Fact]
+        public void Cos_ShouldReturnCorrectResult_WhenGivenRadians()
+        {
+            double radians = Math.PI; // 180 degrees
+            double result = _calculator.Cos(radians);
+            Assert.Equal(-1.0, result, 5);
+        }
+
+        /// <summary>
+        /// Tests the Tan method of the Calculator class.
+        /// </summary>
+        [Fact]
+        public void Tan_ShouldReturnCorrectResult_WhenGivenRadians()
+        {
+            double radians = Math.PI / 4; // 45 degrees
+            double result = _calculator.Tan(radians);
+            Assert.Equal(1.0, result, 5);
+        }
+
+        /// <summary>
+        /// Tests the Log method of the Calculator class.
+        /// </summary>
+        [Fact]
+        public void Log_ShouldReturnCorrectResult_WhenGivenPositiveValue()
+        {
+            double value = Math.E;
+            double result = _calculator.Log(value);
+            Assert.Equal(1.0, result, 5); // ln(e) = 1
+        }
+
+        [Fact]
+        public void Log_ShouldThrowException_WhenGivenZeroOrNegative()
+        {
+            Assert.Throws<ArgumentException>(() => _calculator.Log(0));
+            Assert.Throws<ArgumentException>(() => _calculator.Log(-5));
+        }
+
+        /// <summary>
+        /// Tests the Factorial method of the Calculator class.
+        /// </summary>
+        [Fact]
+        public void Factorial_ShouldReturnCorrectResult_WhenGivenPositiveInteger()
+        {
+            int value = 5;
+            double result = _calculator.Factorial(value);
+            Assert.Equal(120, result);
+        }
+
+        [Fact]
+        public void Factorial_ShouldReturn1_WhenGivenZeroOrOne()
+        {
+            Assert.Equal(1, _calculator.Factorial(0));
+            Assert.Equal(1, _calculator.Factorial(1));
+        }
+
+        [Fact]
+        public void Factorial_ShouldThrowException_WhenGivenNegative()
+        {
+            Assert.Throws<ArgumentException>(() => _calculator.Factorial(-1));
+        }
+
+        /// <summary>
+        /// Tests radians and degree conversion.
+        /// </summary>
+        [Fact]
+        public void DegreesToRadians_ShouldConvertCorrectly()
+        {
+            double degrees = 180;
+            double result = _calculator.DegreesToRadians(degrees);
+            Assert.Equal(Math.PI, result, 5);
+        }
+
+        [Fact]
+        public void RadiansToDegrees_ShouldConvertCorrectly()
+        {
+            double radians = Math.PI;
+            double result = _calculator.RadiansToDegrees(radians);
+            Assert.Equal(180, result, 5);
+        }
+
+
     }
 
 }
