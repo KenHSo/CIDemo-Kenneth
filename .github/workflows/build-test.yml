@@ -77,3 +77,15 @@ jobs:
       with:
         name: calculator-app
         path: ./publish
+
+
+
+    # Nuget Package
+    - name: Pack NuGet package
+      run: dotnet pack ./src/CalculatorLib/CalculatorLib.csproj -c Release -o ./nupkg
+
+    - name: Upload NuGet package
+      uses: actions/upload-artifact@v4
+      with:
+        name: nuget-package
+        path: ./nupkg
