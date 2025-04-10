@@ -51,7 +51,10 @@ jobs:
       - name: Install dotnet format
         run: dotnet tool install -g dotnet-format
 
-      - name: Run code analysis
+      - name: Fix code formatting issues
+        run: dotnet format --verbosity diagnostic
+
+      - name: Verify no changes
         run: dotnet format --verify-no-changes --verbosity diagnostic
 
 
