@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CIDemoTest", "tests\CIDemoT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorLib", "src\CalculatorLib\CalculatorLib.csproj", "{8A8B526C-CF63-D9EE-7553-29E136D19995}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "src\Calculator\Calculator.csproj", "{010CCA1F-DB51-2D32-D5F5-B248B413390F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,18 @@ Global
 		{8A8B526C-CF63-D9EE-7553-29E136D19995}.Release|x64.Build.0 = Release|Any CPU
 		{8A8B526C-CF63-D9EE-7553-29E136D19995}.Release|x86.ActiveCfg = Release|Any CPU
 		{8A8B526C-CF63-D9EE-7553-29E136D19995}.Release|x86.Build.0 = Release|Any CPU
+		{010CCA1F-DB51-2D32-D5F5-B248B413390F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{010CCA1F-DB51-2D32-D5F5-B248B413390F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{010CCA1F-DB51-2D32-D5F5-B248B413390F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{010CCA1F-DB51-2D32-D5F5-B248B413390F}.Debug|x64.Build.0 = Debug|Any CPU
+		{010CCA1F-DB51-2D32-D5F5-B248B413390F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{010CCA1F-DB51-2D32-D5F5-B248B413390F}.Debug|x86.Build.0 = Debug|Any CPU
+		{010CCA1F-DB51-2D32-D5F5-B248B413390F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{010CCA1F-DB51-2D32-D5F5-B248B413390F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{010CCA1F-DB51-2D32-D5F5-B248B413390F}.Release|x64.ActiveCfg = Release|Any CPU
+		{010CCA1F-DB51-2D32-D5F5-B248B413390F}.Release|x64.Build.0 = Release|Any CPU
+		{010CCA1F-DB51-2D32-D5F5-B248B413390F}.Release|x86.ActiveCfg = Release|Any CPU
+		{010CCA1F-DB51-2D32-D5F5-B248B413390F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
