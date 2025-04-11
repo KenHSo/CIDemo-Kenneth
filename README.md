@@ -61,6 +61,6 @@ git push origin v1.0.1
 
 Artifacts and release notes are available in the [Releases](https://github.com/KenHSo/CIDemo-Kenneth/releases) tab.
 
-## Author
+## Weekly assignment at UCL about CI/CD completed by
 
 Kenneth Haagen Sørensen
