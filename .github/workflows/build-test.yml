@@ -59,36 +59,64 @@ jobs:
 
 
 
+      # Slack notifications when build fails
+      - name: Send notification if build fails
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: "https://hooks.slack.com/services/FAKE/WEBHOOK/PATH"
+          SLACK_COLOR: 'danger'
+          SLACK_TITLE: 'Build Failed!'
+          SLACK_MESSAGE: 'Build failed on branch `${{ github.ref }}`. Check details: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'
+
+
   publish:
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-  
+
+    strategy:
+      matrix:
+        os: [win-x64, linux-x64, osx-x64]
+
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
 
-    - name: Publish
-      run: dotnet publish -c Release -o ./publish
+      - name: Publish for ${{ matrix.os }}
+        run: dotnet publish ./src/CalculatorLib/CalculatorLib.csproj -c Release -r ${{ matrix.os }} -p:PublishSingleFile=true --self-contained true -o ./publish/${{ matrix.os }}
 
-    - name: Upload artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: calculator-app
-        path: ./publish
+      - name: Upload platform-specific artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: calculator-${{ matrix.os }}
+          path: ./publish/${{ matrix.os }}
 
 
 
-    # Nuget Package
-    - name: Pack NuGet package
-      run: dotnet pack ./src/CalculatorLib/CalculatorLib.csproj -c Release -o ./nupkg
+  # NuGet Packaging
+  nuget:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
 
-    - name: Upload NuGet package
-      uses: actions/upload-artifact@v4
-      with:
-        name: nuget-package
-        path: ./nupkg
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Pack NuGet package
+        run: dotnet pack ./src/CalculatorLib/CalculatorLib.csproj -c Release -o ./nupkg
+
+      - name: Upload NuGet package
+        uses: actions/upload-artifact@v4
+        with:
+          name: nuget-package
+          path: ./nupkg
+
