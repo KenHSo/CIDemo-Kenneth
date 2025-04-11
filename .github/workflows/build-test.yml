@@ -59,6 +59,17 @@ jobs:
 
 
 
+      # Slack notifications when build fails
+      - name: Send notification if build fails
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: "https://hooks.slack.com/services/FAKE/WEBHOOK/PATH"
+          SLACK_COLOR: 'danger'
+          SLACK_TITLE: 'Build Failed!'
+          SLACK_MESSAGE: 'Build failed on branch `${{ github.ref }}`. Check details: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'
+
+
   publish:
     needs: build
     runs-on: ubuntu-latest
